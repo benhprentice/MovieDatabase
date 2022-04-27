@@ -1,0 +1,371 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <h2>Home Page</h2>
+    <p>Welcome back, {{ username }}!</p>
+
+    <div>
+        <h5>Action</h5>
+        {% for i in action %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Adventure</h5>
+        {% for i in adventure %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Animated</h5>
+        {% for i in animated %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Biography</h5>
+        {% for i in biography %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Comedy</h5>
+        {% for i in comedy %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Crime</h5>
+        {% for i in crime %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Dance</h5>
+        {% for i in dance %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Disaster</h5>
+        {% for i in disaster %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Documentary</h5>
+        {% for i in documentary %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Drama</h5>
+        {% for i in drama %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Family</h5>
+        {% for i in family %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Fantasy</h5>
+        {% for i in fantasy %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Found Footage</h5>
+        {% for i in found %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Historical</h5>
+        {% for i in historical %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Horror</h5>
+        {% for i in horror %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Independent</h5>
+        {% for i in independent %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Legal</h5>
+        {% for i in legal %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Live Action</h5>
+        {% for i in live %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Martial Arts</h5>
+        {% for i in martial %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Musical</h5>
+        {% for i in musical %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Mystery</h5>
+        {% for i in mystery %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Noir</h5>
+        {% for i in noir %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Performance</h5>
+        {% for i in performance %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Political</h5>
+        {% for i in political %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Romance</h5>
+        {% for i in romance %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Satire</h5>
+        {% for i in satire %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Science Fiction</h5>
+        {% for i in science %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Short</h5>
+        {% for i in short %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Silent</h5>
+        {% for i in silent %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Slasher</h5>
+        {% for i in slasher %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Sports</h5>
+        {% for i in sports %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Spy</h5>
+        {% for i in spy %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Superhero</h5>
+        {% for i in superhero %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Supernatural</h5>
+        {% for i in supernatural %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Suspense</h5>
+        {% for i in suspense %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Teen</h5>
+        {% for i in teen %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Thriller</h5>
+        {% for i in thriller %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>War</h5>
+        {% for i in war %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h5>Western</h5>
+        {% for i in western %}
+            <p> {{ i[0] }} {{ i[1] }} </p>
+            <p> Cast: {{ i[2] }}</p>
+            <p></p>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+
+{#    {% for genrezz in genres %}#}
+{#        <form action="#" method = "POST" >#}
+{#        <button type="submit" value= {{ genrezz }}>{{ genrezz }}</button>#}
+{#        </form>#}
+{#{% endfor %}#}
+{#    {% for i in result %}#}
+{#        <h1> {{ i[0] }} </h1>#}
+{#    {% endfor %}#}
+

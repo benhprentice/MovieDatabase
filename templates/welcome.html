@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>{% block title %}{% endblock %}</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+	</head>
+	<body class="loggedin">
+		<nav class="navtop">
+			<div>
+				<h1>Movie Database</h1>
+                <a href="{{ url_for('home') }}"><i class="fas fa-home"></i>Home</a>
+				<a href="{{ url_for('login') }}"><i class="fas fa-sign-out-alt"></i>Login</a>
+			</div>
+		</nav>
+		<div class="content">
+			{% block content %}
+                <h5>Welcome to the Texas State University Movie Database!</h5>
+                <img src= "./static/32-2.jpg" >
+            {% endblock %}
+		</div>
+	</body>
+</html>
+
+
+{#{% extends 'layout.html' %}#}
+{##}
+{#{% block title %}Home{% endblock %}#}
+{##}
+{#{% block content %}#}
+{#    <h2>Home Page</h2>#}
+{#    <p>Welcome back, {{ username }}!</p>#}
+{##}
+{#{% endblock %}#}
