@@ -188,225 +188,23 @@ def home():
             title = data[i]['title']
             year = data[i]['year']
             for j in data[i]['cast']:
-                cast += j + "   "
+                cast += j
             for j in data[i]['genres']:
-                genres += j + "   "
+                genres += j
             cursor.execute('INSERT INTO movies (title, year, cast, genres) VALUES (?, ?, ?, ?)',
                            (title, year, cast, genres))
         conn.commit()
 
-        actionMovies = '%Action%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (actionMovies,))
-        actionMovies = cursor.fetchmany(100)
-        conn.commit()
+        if request.method == 'POST' and 'username':
 
-        adventureMovies = '%Adventure%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (adventureMovies,))
-        adventureMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        animatedMovies = '%Animated%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (animatedMovies,))
-        animatedMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        biographyMovies = '%Biography%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (biographyMovies,))
-        biographyMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        comedyMovies = '%Comedy%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (comedyMovies,))
-        comedyMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        crimeMovies = '%Crime%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (crimeMovies,))
-        crimeMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        danceMovies = '%Dance%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (danceMovies,))
-        danceMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        disasterMovies = '%Disaster%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (disasterMovies,))
-        disasterMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        documentaryMovies = '%Documentary%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (documentaryMovies,))
-        documentaryMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        dramaMovies = '%Drama%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (dramaMovies,))
-        dramaMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        eroticMovies = '%Erotic%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (eroticMovies,))
-        eroticMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        familyMovies = '%Family%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (familyMovies,))
-        familyMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        fantasyMovies = '%Fantasy%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (fantasyMovies,))
-        fantasyMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        foundFootageMovies = '%Found%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (foundFootageMovies,))
-        foundFootageMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        historicalMovies = '%Historical%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (historicalMovies,))
-        historicalMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        horrorMovies = '%Horror%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (horrorMovies,))
-        horrorMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        independentMovies = '%Independent%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (independentMovies,))
-        independentMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        legalMovies = '%Legal%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (legalMovies,))
-        legalMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        liveActionMovies = '%Live%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (liveActionMovies,))
-        liveActionMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        martialArtsMovies = '%Martial%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (martialArtsMovies,))
-        martialArtsMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        musicalMovies = '%Musical%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (musicalMovies,))
-        musicalMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        mysteryMovies = '%Mystery%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (mysteryMovies,))
-        mysteryMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        noirMovies = '%Noir%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (noirMovies,))
-        noirMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        performanceMovies = '%Performance%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (performanceMovies,))
-        performanceMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        politicalMovies = '%Political%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (politicalMovies,))
-        politicalMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        romanceMovies = '%Romance%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (romanceMovies,))
-        romanceMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        satireMovies = '%Satire%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (satireMovies,))
-        satireMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        scienceFictionMovies = '%Science%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (scienceFictionMovies,))
-        scienceFictionMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        shortMovies = '%Short%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (shortMovies,))
-        shortMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        silentMovies = '%Silent%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (silentMovies,))
-        silentMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        slasherMovies = '%Slasher%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (slasherMovies,))
-        slasherMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        sportsMovies = '%Sport%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (sportsMovies,))
-        sportsMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        spyMovies = '%Spy%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (spyMovies,))
-        spyMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        superheroMovies = '%Superhero%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (superheroMovies,))
-        superheroMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        supernaturalMovies = '%Supernatural%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (supernaturalMovies,))
-        supernaturalMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        suspenseMovies = '%Suspense%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (suspenseMovies,))
-        suspenseMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        teenMovies = '%Teen%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (teenMovies,))
-        teenMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        thrillerMovies = '%Thriller%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (thrillerMovies,))
-        thrillerMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        warMovies = '%War%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (warMovies,))
-        warMovies = cursor.fetchmany(100)
-        conn.commit()
-
-        westernMovies = '%Western%'
-        cursor.execute('SELECT * FROM movies WHERE genres LIKE ?', (westernMovies,))
-        westernMovies = cursor.fetchmany(100)
-        conn.commit()
+            genre = request.form['genrezz']
+            print(genre)
+            cursor.execute('SELECT * FROM movies WHERE genres = ?', (genre,))
+            moviez = cursor.fetchmany(100)
+            return render_template('home.html', username=session['username'], genres=genresList, moviez=moviez)
 
         # User is loggedin show them the home page
-        return render_template('home.html', username=session['username'], action=actionMovies, adventure=adventureMovies,
-                               animated=animatedMovies, biography=biographyMovies, comedy=comedyMovies, crime=crimeMovies,
-                               dance=danceMovies, disaster=disasterMovies, documentary=documentaryMovies, drama=dramaMovies,
-                               family=familyMovies, fantasy=fantasyMovies, found=foundFootageMovies, historical=historicalMovies,
-                               horror=horrorMovies, independent=independentMovies, legal=legalMovies, live=liveActionMovies,
-                               martial=martialArtsMovies, musical=musicalMovies, mystery=mysteryMovies, noir=noirMovies,
-                               performance=performanceMovies, political=politicalMovies, romance=romanceMovies, satire=satireMovies,
-                               science=scienceFictionMovies, short=shortMovies, silent=silentMovies, slasher=slasherMovies,
-                               sports=sportsMovies, spy=spyMovies, superhero=superheroMovies, supernatural=supernaturalMovies,
-                               suspense=suspenseMovies, teen=teenMovies, thriller=thrillerMovies, war=warMovies,
-                               western=westernMovies)
+        return render_template('home.html', username=session['username'], genres=genresList)
 
 
     # User is not loggedin redirect to login page
