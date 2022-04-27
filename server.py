@@ -44,6 +44,14 @@ cursor_setup.execute('DROP TABLE IF EXISTS movies')
 conn.commit()
 cursor_setup.execute('CREATE TABLE movies(title text, year integer, cast text, genres text)')
 conn.commit()
+cursor_setup.execute('DROP TABLE IF EXISTS movieCast')
+conn.commit()
+cursor_setup.execute('CREATE TABLE movieCast(title text, cast text)')
+conn.commit()
+cursor_setup.execute('DROP TABLE IF EXISTS movieGenres')
+conn.commit()
+cursor_setup.execute('CREATE TABLE movieGenres(title text, genre text)')
+conn.commit()
 cursor_setup.close()
 '''
 # External database connection
@@ -189,8 +197,10 @@ def home():
             year = data[i]['year']
             for j in data[i]['cast']:
                 cast += j
+                cursor.execute('INSERT INTO movieCast (title, cast) VALUES (?, ?)', (title, j))
             for j in data[i]['genres']:
                 genres += j
+                cursor.execute('INSERT INTO movieGenres (title, genre) VALUES (?,?)', (title, j))
             cursor.execute('INSERT INTO movies (title, year, cast, genres) VALUES (?, ?, ?, ?)',
                            (title, year, cast, genres))
         conn.commit()
@@ -199,7 +209,7 @@ def home():
 
             genre = request.form['genrezz']
             print(genre)
-            cursor.execute('SELECT * FROM movies WHERE genres = ?', (genre,))
+            cursor.execute('SELECT * FROM movieGenres WHERE genre = ?', (genre,))
             moviez = cursor.fetchmany(100)
             return render_template('home.html', username=session['username'], genres=genresList, moviez=moviez)
 
