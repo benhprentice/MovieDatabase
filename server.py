@@ -189,6 +189,14 @@ def home():
     if 'loggedin' in session:
 
         cursor = conn.cursor()
+        
+        if request.method == 'POST' and 'username':
+
+            genre = request.form['genrezz']
+            print(genre)
+            cursor.execute('SELECT title FROM movieGenres WHERE genre = ?', (genre,))
+            moviez = cursor.fetchmany(100)
+            return render_template('home.html', username=session['username'], genres=genresList, moviez=moviez)
 
         for i in range(1000):
             cast = ''
@@ -204,14 +212,6 @@ def home():
             cursor.execute('INSERT INTO movies (title, year, cast, genres) VALUES (?, ?, ?, ?)',
                            (title, year, cast, genres))
         conn.commit()
-
-        if request.method == 'POST' and 'username':
-
-            genre = request.form['genrezz']
-            print(genre)
-            cursor.execute('SELECT * FROM movieGenres WHERE genre = ?', (genre,))
-            moviez = cursor.fetchmany(100)
-            return render_template('home.html', username=session['username'], genres=genresList, moviez=moviez)
 
         # User is loggedin show them the home page
         return render_template('home.html', username=session['username'], genres=genresList)
