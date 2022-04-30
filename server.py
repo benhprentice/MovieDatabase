@@ -197,7 +197,6 @@ def home():
         if request.method == 'POST' and 'username':
 
             genre = request.form['genrezz']
-            print(genre)
             cursor.execute('SELECT title FROM movieGenres WHERE genre = ?', (genre,))
             moviez = cursor.fetchmany(100)
             return render_template('home.html', username=session['username'], genres=genresList, moviez=moviez)
