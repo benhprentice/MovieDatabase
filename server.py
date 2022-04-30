@@ -52,6 +52,10 @@ cursor_setup.execute('DROP TABLE IF EXISTS movieGenres')
 conn.commit()
 cursor_setup.execute('CREATE TABLE movieGenres(title text, genre text)')
 conn.commit()
+cursor_setup.execute('DROP TABLE IF EXISTS viewedMovies')
+conn.commit()
+cursor_setup.execute('CREATE TABLE viewedMovies(title text, genre text)')
+conn.commit()
 cursor_setup.close()
 '''
 # External database connection
@@ -189,7 +193,7 @@ def home():
     if 'loggedin' in session:
 
         cursor = conn.cursor()
-        
+
         if request.method == 'POST' and 'username':
 
             genre = request.form['genrezz']
