@@ -9,18 +9,27 @@
     <div class="container">
     <div class="row">
     <div class="topnav" align = "right">
-  <input type="text" placeholder="Search.." >
+
+                <form action="{{ url_for('home') }}" method="POST">
+                    <input type="text"  name="titleSearched" placeholder="Search.." >
+                </form>
+
     </div>
-        <div class="col-2">
+        <div class="col-3">
             {% for genrezz in genres %}
                 <form action="{{ url_for('home') }}" method="POST">
-                    <input type="submit" class = "genreButton" name="genrezz" value={{ genrezz }}>
+                    <input type="submit" class = "genreButton" name="genrezz" value='{{ genrezz }}'>
                 </form>
             {% endfor %}
         </div>
+    <div class = "col-1"></div>
         <div class="col-4">
             {% for i in moviez %}
-                <p> {{ i[0] }} </p>
+                <form action = "{{ url_for('home') }}" method="POST">
+
+                        <input class = "terd" type = "submit" value = '{{ i[0] }}'>
+
+                </form>
             {% endfor %}
         </div>
         <div class="col-3">

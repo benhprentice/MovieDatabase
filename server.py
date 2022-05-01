@@ -194,12 +194,23 @@ def home():
 
         cursor = conn.cursor()
 
-        if request.method == 'POST' and 'username':
+        if request.method == 'POST' and 'username' and 'genrezz' in request.form:
 
             genre = request.form['genrezz']
             cursor.execute('SELECT title FROM movieGenres WHERE genre = ?', (genre,))
             moviez = cursor.fetchmany(100)
             return render_template('home.html', username=session['username'], genres=genresList, moviez=moviez)
+
+        if request.method == 'POST' and 'titleSearched' in request.form:
+            title = request.form['titleSearched']
+            print(title)
+            cursor.execute('SELECT genre FROM movieGenres WHERE title = ?', (title,))
+            Xgenres = cursor.fetchall()
+            print(Xgenres[0][0])
+            for i in Xgenres:
+                cursor.execute('INSERT INTO moviesSearched (title, genre) VALUES (?, ?)', (title, i[0],))
+            conn.commit()
+
 
         for i in range(1000):
             cast = ''
@@ -218,7 +229,9 @@ def home():
                            (title, year, cast, genres))
         conn.commit()
 
-        # User is loggedin show them the home page
+
+
+    # User is loggedin show them the home page
         return render_template('home.html', username=session['username'], genres=genresList)
 
 

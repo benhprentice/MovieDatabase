@@ -147,5 +147,22 @@ body.loggedin {
 }
 
 .genreButton {
-    width: 120px;
+    width: 220px;
+    background-color: #0c63e4;
+    color: white;
+    font-weight: bold;
 }
+
+
+.topnav {
+  overflow: hidden;
+  background-color: #e9e9e9;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.terd{
+    width: 500px;
+    background-color: orange;
+}
+
