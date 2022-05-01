@@ -211,6 +211,16 @@ def home():
                 cursor.execute('INSERT INTO moviesSearched (title, genre) VALUES (?, ?)', (title, i[0],))
             conn.commit()
 
+        if request.method == 'POST' and 'moviezz' in request.form:
+            moviezz = request.form['moviezz']
+            print(moviezz)
+            cursor.execute('SELECT genre FROM movieGenres WHERE title = ?', (moviezz,))
+            Xgenres = cursor.fetchall()
+            print(Xgenres[0][0])
+            for i in Xgenres:
+                cursor.execute('INSERT INTO viewedMovies (title, genre) VALUES (?, ?)', (moviezz, i[0],))
+            conn.commit()
+
 
         for i in range(1000):
             cast = ''
