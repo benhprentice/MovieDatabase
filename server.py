@@ -206,9 +206,10 @@ def home():
             genres = ''
             title = data[i]['title']
             year = data[i]['year']
+            #cast = data[i]['cast']
             for j in data[i]['cast']:
-                cast += j
-                cursor.execute('INSERT INTO movieCast (title, cast) VALUES (?, ?)', (title, j))
+                cast += j + ', '
+            cursor.execute('INSERT INTO movieCast (title, cast) VALUES (?, ?)', (title, cast))
             for j in data[i]['genres']:
                 genres += j
                 cursor.execute('INSERT INTO movieGenres (title, genre) VALUES (?,?)', (title, j))
