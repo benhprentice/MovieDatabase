@@ -8,6 +8,9 @@
 
     <div class="container">
     <div class="row">
+    <div class="topnav" align = "right">
+  <input type="text" placeholder="Search.." >
+    </div>
         <div class="col-2">
             {% for genrezz in genres %}
                 <form action="{{ url_for('home') }}" method="POST">
