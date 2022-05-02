@@ -84,8 +84,8 @@ def welcome():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if 'loggedin' in session:
-        return redirect(url_for("home"))
+    # if 'loggedin' in session:
+    #     return redirect(url_for("home"))
 
 
     # Output message if something goes wrong...
@@ -215,7 +215,7 @@ def home():
             for i in Xgenres:
                 cursor.execute('INSERT INTO moviesSearched (title, genre) VALUES (?, ?)', (title, i[0],))
             conn.commit()
-            return render_template('home.html', username=session['username'], genres=genresList)
+            return render_template('home.html', username=session['username'], genres=genresList, moviez=title)
 
         if request.method == 'POST' and 'moviezz' in request.form:
             moviezz = request.form['moviezz']
