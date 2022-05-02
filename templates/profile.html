@@ -15,6 +15,14 @@
             <td>Email:</td>
             <td>{{ user[2] }}</td>
         </tr>
+        <tr>
+            <td>Movies Viewed:</td>
+            <td rowspan="4">
+            {% for i in movies %}
+                {{ i[0] }}
+            {% endfor %}
+            </td>
+        </tr>
     </table>
 </div>
 {% endblock %}

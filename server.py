@@ -56,6 +56,10 @@ cursor_setup.execute('DROP TABLE IF EXISTS viewedMovies')
 conn.commit()
 cursor_setup.execute('CREATE TABLE viewedMovies(title text, genre text)')
 conn.commit()
+cursor_setup.execute('DROP TABLE IF EXISTS moviesSearched')
+conn.commit()
+cursor_setup.execute('CREATE TABLE moviesSearched(title text, genre text)')
+conn.commit()
 cursor_setup.close()
 '''
 # External database connection
@@ -222,7 +226,6 @@ def home():
             conn.commit()
             return render_template('home.html', username=session['username'], genres=genresList)
 
-
         for i in range(1000):
             cast = ''
             genres = ''
@@ -258,9 +261,11 @@ def profile():
         cursor = conn.cursor()
         cursor.execute('SELECT * FROM users WHERE username = ?', (session['username'],))
         user = cursor.fetchone()
+        cursor.execute('SELECT DISTINCT title FROM viewedMovies')
+        movies = cursor.fetchall()
 
         # Show the profile page with user info
-        return render_template('profile.html', user=user)
+        return render_template('profile.html', user=user, movies=movies)
 
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))
