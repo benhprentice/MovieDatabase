@@ -61,6 +61,7 @@ conn.commit()
 cursor_setup.execute('CREATE TABLE moviesSearched(title text, genre text)')
 conn.commit()
 cursor_setup.close()
+
 '''
 # External database connection
 
@@ -201,6 +202,7 @@ def home():
         if request.method == 'POST' and 'username' and 'genrezz' in request.form:
             genre = request.form['genrezz']
             cursor.execute('SELECT title FROM movieGenres WHERE genre = ?', (genre,))
+            global moviez
             moviez = cursor.fetchmany(100)
             return render_template('home.html', username=session['username'], genres=genresList, moviez=moviez)
 
@@ -224,7 +226,7 @@ def home():
             for i in Xmovies:
                 cursor.execute('INSERT INTO viewedMovies (title, genre) VALUES (?, ?)', (moviezz, i[0],))
             conn.commit()
-            return render_template('home.html', username=session['username'], genres=genresList)
+            return render_template('home.html', username=session['username'], genres=genresList, moviez=moviez)
 
         for i in range(1000):
             cast = ''
