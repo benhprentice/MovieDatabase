@@ -209,7 +209,6 @@ def home():
         if request.method == 'POST' and 'titleSearched' in request.form:
             title = request.form['titleSearched']
             print(title)
-            # titlez = [1][1]
             titlez = [[title]]
             cursor.execute('SELECT genre FROM movieGenres WHERE title = ?', (title,))
             Xgenres = cursor.fetchall()
