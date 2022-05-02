@@ -209,15 +209,15 @@ def home():
         if request.method == 'POST' and 'titleSearched' in request.form:
             title = request.form['titleSearched']
             print(title)
-            titlez = [[title]]
-            cursor.execute('SELECT genre FROM movieGenres WHERE title = ?', (title,))
+            # titlez = [[title]]
+            cursor.execute('SELECT DISTINCT title FROM movieGenres WHERE title LIKE ?', ("%" + title + "%",))
             Xgenres = cursor.fetchall()
-            moviez = titlez
+            moviez = Xgenres
             print(Xgenres[0][0])
             for i in Xgenres:
                 cursor.execute('INSERT INTO moviesSearched (title, genre) VALUES (?, ?)', (title, i[0],))
             conn.commit()
-            return render_template('home.html', username=session['username'], genres=genresList, moviez=titlez)
+            return render_template('home.html', username=session['username'], genres=genresList, moviez=Xgenres)
 
         if request.method == 'POST' and 'moviezz' in request.form:
             moviezz = request.form['moviezz']
