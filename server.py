@@ -209,9 +209,10 @@ def home():
         if request.method == 'POST' and 'titleSearched' in request.form:
             title = request.form['titleSearched']
             print(title)
-            message = "That is not a valid search"
+            message = "No results"
             cursor.execute('SELECT DISTINCT title FROM movieGenres WHERE title LIKE ?', ("%" + title + "%",))
             Xgenres = cursor.fetchall()
+            moviez = Xgenres
             if len(Xgenres) == 0:
                 return render_template('home.html', username=session['username'], genres=genresList, message=message)
             print(Xgenres[0][0])
