@@ -209,10 +209,11 @@ def home():
         if request.method == 'POST' and 'titleSearched' in request.form:
             title = request.form['titleSearched']
             print(title)
-            # titlez = [[title]]
+            message = "That is not a valid search"
             cursor.execute('SELECT DISTINCT title FROM movieGenres WHERE title LIKE ?', ("%" + title + "%",))
             Xgenres = cursor.fetchall()
-            moviez = Xgenres
+            if len(Xgenres) == 0:
+                return render_template('home.html', username=session['username'], genres=genresList, message=message)
             print(Xgenres[0][0])
             for i in Xgenres:
                 cursor.execute('INSERT INTO moviesSearched (keyword, title) VALUES (?, ?)', (title, i[0],))
