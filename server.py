@@ -58,7 +58,7 @@ cursor_setup.execute('CREATE TABLE viewedMovies(title text, genre text)')
 conn.commit()
 cursor_setup.execute('DROP TABLE IF EXISTS moviesSearched')
 conn.commit()
-cursor_setup.execute('CREATE TABLE moviesSearched(title text, genre text)')
+cursor_setup.execute('CREATE TABLE moviesSearched(keyword text, title text)')
 conn.commit()
 cursor_setup.close()
 
@@ -215,7 +215,7 @@ def home():
             moviez = Xgenres
             print(Xgenres[0][0])
             for i in Xgenres:
-                cursor.execute('INSERT INTO moviesSearched (title, genre) VALUES (?, ?)', (title, i[0],))
+                cursor.execute('INSERT INTO moviesSearched (keyword, title) VALUES (?, ?)', (title, i[0],))
             conn.commit()
             return render_template('home.html', username=session['username'], genres=genresList, moviez=Xgenres)
 
@@ -267,9 +267,11 @@ def profile():
         user = cursor.fetchone()
         cursor.execute('SELECT DISTINCT title FROM viewedMovies')
         movies = cursor.fetchall()
+        cursor.execute('SELECT DISTINCT keyword FROM moviesSearched')
+        keywords = cursor.fetchall()
 
         # Show the profile page with user info
-        return render_template('profile.html', user=user, movies=movies)
+        return render_template('profile.html', user=user, movies=movies, keyword=keywords)
 
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))

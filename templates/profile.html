@@ -3,27 +3,36 @@
 {% block title %}Profile{% endblock %}
 
 {% block content %}
-<h2>Profile Page</h2>
-<div>
-    <p>Your account details are below:</p>
-    <table>
-        <tr>
-            <td>Username:</td>
-            <td>{{ user[3] }}</td>
-        </tr>
-        <tr>
-            <td>Email:</td>
-            <td>{{ user[2] }}</td>
-        </tr>
-        <tr>
-            <td class ="yoyo">Movies Viewed:</td>
-            <td>
-            {% for i in movies %}
-                {{ i[0] }}
-                <br>
-            {% endfor %}
-            </td>
-        </tr>
-    </table>
-</div>
+    <h2>Profile Page</h2>
+    <div>
+        <p>Your account details are below:</p>
+        <table>
+            <tr>
+                <td>Username:</td>
+                <td>{{ user[3] }}</td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td>{{ user[2] }}</td>
+            </tr>
+            <tr>
+                <td class="yoyo">Movies Viewed:</td>
+                <td>
+                    {% for i in movies %}
+                        {{ i[0] }}
+                        <br>
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <td class="yoyo">Keywords Searched:</td>
+                <td>
+                    {% for i in keyword %}
+                        {{ i[0] }}
+                        <br>
+                    {% endfor %}
+                </td>
+            </tr>
+        </table>
+    </div>
 {% endblock %}
