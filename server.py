@@ -62,6 +62,26 @@ cursor_setup.execute('CREATE TABLE moviesSearched(keyword text, title text)')
 conn.commit()
 cursor_setup.close()
 
+cursor = conn.cursor()
+
+for i in range(1000):
+    cast = ''
+    genres = ''
+    title = data[i]['title']
+    year = data[i]['year']
+    # cast = data[i]['cast']
+    for j in data[i]['cast']:
+        cast += j + ', '
+    cast = cast[0:-2]
+    cursor.execute('INSERT INTO movieCast (title, cast) VALUES (?, ?)', (title, cast))
+    for j in data[i]['genres']:
+        genres += j
+        cursor.execute('INSERT INTO movieGenres (title, genre) VALUES (?,?)', (title, j))
+    cursor.execute('INSERT INTO movies (title, year, cast, genres) VALUES (?, ?, ?, ?)',
+                   (title, year, cast, genres))
+conn.commit()
+
+
 '''
 # External database connection
 
@@ -231,25 +251,6 @@ def home():
                 cursor.execute('INSERT INTO viewedMovies (title, genre) VALUES (?, ?)', (moviezz, i[0],))
             conn.commit()
             return render_template('home.html', username=session['username'], genres=genresList, moviez=moviez)
-
-        for i in range(1000):
-            cast = ''
-            genres = ''
-            title = data[i]['title']
-            year = data[i]['year']
-            #cast = data[i]['cast']
-            for j in data[i]['cast']:
-                cast += j + ', '
-            cast = cast[0:-2]
-            cursor.execute('INSERT INTO movieCast (title, cast) VALUES (?, ?)', (title, cast))
-            for j in data[i]['genres']:
-                genres += j
-                cursor.execute('INSERT INTO movieGenres (title, genre) VALUES (?,?)', (title, j))
-            cursor.execute('INSERT INTO movies (title, year, cast, genres) VALUES (?, ?, ?, ?)',
-                           (title, year, cast, genres))
-        conn.commit()
-
-
 
     # User is loggedin show them the home page
         return render_template('home.html', username=session['username'], genres=genresList)
