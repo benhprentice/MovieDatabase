@@ -147,7 +147,7 @@ body.loggedin {
 }
 
 .genreButton {
-    width: 220px;
+    width: 160px;
     background-color: #0c63e4;
     color: white;
     font-weight: bold;
@@ -162,7 +162,7 @@ body.loggedin {
 }
 
 .terd{
-    width: 500px;
+    width: 425px;
     background-color: orange;
 }
 

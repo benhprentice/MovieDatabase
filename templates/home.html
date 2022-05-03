@@ -7,38 +7,52 @@
     <p>Welcome back, {{ username }}!</p>
 
     <div class="container">
-    <div class="row">
-    <div class="topnav" align = "right">
+        <div class="row">
+            <div class="topnav" align="right">
 
                 <form action="{{ url_for('home') }}" method="POST">
-                    <input type="text"  name="titleSearched" placeholder="Search.." >
+                    <input type="text" name="titleSearched" placeholder="Search..">
                 </form>
 
-    </div>
-        <div class="col-3">
-            {% for genrezz in genres %}
-                <form action="{{ url_for('home') }}" method="POST">
-                    <input type="submit" class = "genreButton" name="genrezz" value='{{ genrezz }}'>
-                </form>
-            {% endfor %}
-        </div>
-    <div class = "col-1"></div>
-        <div class="col-4">
-            {% for i in moviez %}
-                <form action = "{{ url_for('home') }}" method="POST">
+            </div>
+            <div class="col-3">
+                {% for genrezz in genres %}
+                    <form action="{{ url_for('home') }}" method="POST">
+                        <input type="submit" class="genreButton" name="genrezz" value='{{ genrezz }}'>
+                    </form>
+                {% endfor %}
+            </div>
+            <div class="col-6">
+                {% for i in moviez %}
+                    <form action="{{ url_for('home') }}" method="POST">
 
-                        <input class = "terd" type = "submit" name="moviezz" value = '{{ i[0] }}'>
+                        <input class="terd" type="submit" name="moviezz" value='{{ i[0] }}'>
 
-                </form>
-            {% endfor %}
-             <p>{{ message }}</p>
+                    </form>
+                {% endfor %}
+                <p>{{ message }}</p>
+            </div>
+            <div class="col-3">
+                <h4> {{ movieTitle }}</h4>
+                <p> {{ movieYear }}</p>
+                <p>
+                <b>{{ head1 }}</b>
+                    <br>
+                    {% for i in movieCast %}
+                        {{ i[0] }}
+                        <br>
+                    {% endfor %}
+                </p>
+                <p>
+                <b>{{ head2 }}</b>
+                    <br>
+                    {% for i in movieGenres %}
+                        {{ i[0] }}
+                        <br>
+                    {% endfor %}
+                </p>
+            </div>
         </div>
-        <div class="col-3">
-            {% for i in castz %}
-                <p> {{ i[0] }}</p>
-            {% endfor %}
-        </div>
-    </div>
     </div>
 
 {% endblock %}

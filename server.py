@@ -46,7 +46,7 @@ cursor_setup.execute('CREATE TABLE movies(title text, year integer, cast text, g
 conn.commit()
 cursor_setup.execute('DROP TABLE IF EXISTS movieCast')
 conn.commit()
-cursor_setup.execute('CREATE TABLE movieCast(title text, cast text)')
+cursor_setup.execute('CREATE TABLE movieCast(title text, castList text)')
 conn.commit()
 cursor_setup.execute('DROP TABLE IF EXISTS movieGenres')
 conn.commit()
@@ -72,8 +72,9 @@ for i in range(1000):
     # cast = data[i]['cast']
     for j in data[i]['cast']:
         cast += j + ', '
+        cursor.execute('INSERT INTO movieCast (title, castList) VALUES (?, ?)', (title, j))
     cast = cast[0:-2]
-    cursor.execute('INSERT INTO movieCast (title, cast) VALUES (?, ?)', (title, cast))
+    # cursor.execute('INSERT INTO movieCast (title, cast) VALUES (?, ?)', (title, cast))
     for j in data[i]['genres']:
         genres += j
         cursor.execute('INSERT INTO movieGenres (title, genre) VALUES (?,?)', (title, j))
@@ -250,7 +251,15 @@ def home():
             for i in Xmovies:
                 cursor.execute('INSERT INTO viewedMovies (title, genre) VALUES (?, ?)', (moviezz, i[0],))
             conn.commit()
-            return render_template('home.html', username=session['username'], genres=genresList, moviez=moviez)
+            cursor.execute('SELECT year FROM movies WHERE title = ?', (moviezz,))
+            movieYear = cursor.fetchone()
+            cursor.execute('SELECT castList FROM movieCast WHERE title = ?', (moviezz,))
+            movieCast = cursor.fetchall()
+            head1 = "Cast:"
+            head2 = "Genres:"
+            return render_template('home.html', username=session['username'], genres=genresList, moviez=moviez,
+                                   movieTitle=moviezz, movieYear=movieYear[0], movieCast=movieCast, head1=head1,
+                                   head2=head2, movieGenres=Xmovies)
 
     # User is loggedin show them the home page
         return render_template('home.html', username=session['username'], genres=genresList)
@@ -270,11 +279,13 @@ def profile():
         user = cursor.fetchone()
         cursor.execute('SELECT DISTINCT title FROM viewedMovies')
         movies = cursor.fetchall()
+        cursor.execute('SELECT DISTINCT genre FROM viewedMovies')
+        genress = cursor.fetchall()
         cursor.execute('SELECT DISTINCT keyword FROM moviesSearched')
         keywords = cursor.fetchall()
 
         # Show the profile page with user info
-        return render_template('profile.html', user=user, movies=movies, keyword=keywords)
+        return render_template('profile.html', user=user, movies=movies, keyword=keywords, genress=genress)
 
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))

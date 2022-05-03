@@ -25,6 +25,15 @@
                 </td>
             </tr>
             <tr>
+                <td class="yoyo">Genres Viewed:</td>
+                <td>
+                    {% for i in genress %}
+                        {{ i[0] }}
+                        <br>
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
                 <td class="yoyo">Keywords Searched:</td>
                 <td>
                     {% for i in keyword %}
