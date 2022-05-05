@@ -20,8 +20,8 @@ with open("./static/movies.json") as f:
     data.reverse()
 
 genresList = []
-for i in data:
-    for j in i['genres']:
+for i in range(1000):
+    for j in data[i]['genres']:
         genresList.append(j)
 
 genresList = list( dict.fromkeys(genresList) )
