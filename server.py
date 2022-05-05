@@ -281,11 +281,18 @@ def profile():
         movies = cursor.fetchall()
         cursor.execute('SELECT DISTINCT genre FROM viewedMovies WHERE user = ?', (session['username'],))
         genress = cursor.fetchall()
+        cursor.execute('SELECT DISTINCT title FROM moviesSearched WHERE user = ?', (session['username'],))
+        distTitle = cursor.fetchall()
+        searchGenres = []
+        for i in distTitle:
+            cursor.execute('SELECT DISTINCT genre FROM movieGenres WHERE title = ?', (i))
+            searchGenres += cursor.fetchall()
         cursor.execute('SELECT DISTINCT keyword FROM moviesSearched WHERE user = ?', (session['username'],))
         keywords = cursor.fetchall()
 
         # Show the profile page with user info
-        return render_template('profile.html', user=user, movies=movies, keyword=keywords, genress=genress)
+        return render_template('profile.html', user=user, movies=movies, keyword=keywords, genress=genress,
+                               searchGenres=searchGenres)
 
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))

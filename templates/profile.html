@@ -34,6 +34,15 @@
                 </td>
             </tr>
             <tr>
+                <td class="yoyo">Search Results Genres:</td>
+                <td>
+                    {% for i in searchGenres %}
+                        {{ i[0] }}
+                        <br>
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
                 <td class="yoyo">Keywords Searched:</td>
                 <td>
                     {% for i in keyword %}
